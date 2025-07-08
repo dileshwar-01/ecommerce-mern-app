@@ -5,8 +5,8 @@ import { NavLink,Link } from 'react-router-dom'
 const Navbar = () => {
     const[visible,setVisible] = useState(false)
   return (
-    <div className='flex items-center justify-between  font-medium '>
-      <img src={assets.urbanAura} className='w-45 h-35'  alt="" />
+    <div className='flex items-center justify-between py-3  font-medium '>
+      <img src={assets.urbanAura} className='w-25'  alt="" />
       <ul className='hidden sm:flex gap-5 text-sm text-gray-700'>
         <NavLink to='/' className='flex flex-col gap-1 items-center' >
             <p>HOME</p>
