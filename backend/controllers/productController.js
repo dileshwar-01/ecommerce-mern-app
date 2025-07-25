@@ -75,4 +75,26 @@ const singleProduct= async(req,res)=>{
     }
 }
 
-export {listProducts,removeProduct,addProduct,singleProduct} ;
+//---------------------------------------------function for edit product------------------------------------
+
+const editProduct = async (req, res) => {
+  try {
+    const productId = req.params.id;
+    const {price, sizes, bestSeller } = req.body;
+
+     const updateFields = {};
+
+    if (price !== undefined) updateFields.price = Number(price);
+    if (sizes !== undefined) updateFields.sizes = JSON.parse(sizes);
+    if (bestSeller !== undefined) updateFields.bestSeller = bestSeller === 'true';
+
+    await productModel.findByIdAndUpdate(productId, updateFields);
+    res.json({ success: true, message: "Product updated" });
+  } catch (error) {
+    console.log(error);
+    res.json({ success: false, message: error.message });
+  }
+};
+
+
+export {listProducts,removeProduct,addProduct,singleProduct, editProduct} ;
